@@ -1,29 +1,29 @@
 const _ = require('./underbar');
 
 const first = function(str, n) {
-  // Your code goes here
+  const result = _.first(str.split(''), n);
+  return result.length <= 1 ?  result : result.join('');
 };
 
 const last = function(str, n) {
-  // Your code goes here
+  const result = _.last(str.split(''), n);
+  return result.length <= 1 ?  result : result.join('');
 };
 
 const removeChar = function(str, target) {
-  // hint: use _.reject
-  // Your code goes here
+  return _.reject(str.split(''), current => current === target).join('');
 };
 
 const hasChar = function(str, target) {
-  // hint: use _.some
-  // Your code goes here
+  return _.some(str.split(''), current => current === target);
 };
 
 const isOnlyDigits = function(str) {
-  // Your code goes here
+  return _.every(str.split(''), current => current >= 0 && current <= 9);
 };
 
 const filterToOnlyDigits = function(str) {
-  // Your code goes here
+  return _.filter(str.split(''), current => current !== ' ' && current >= 0 && current <= 9).join('');
 };
 
 const truncateString = function(val, maxLength) {
@@ -32,16 +32,23 @@ const truncateString = function(val, maxLength) {
 };
 
 const truncateLongItems = function(obj, maxLength) {
-  // hint: use truncateString above
-  // Your code goes here
+  return _.map(obj, current => truncateString(current, maxLength));
 };
 
 const countChars = function(str) {
-  // Your code goes here
+  const result = {};
+  _.each(str.split(''), current => {
+    if (result[current]) {
+      result[current]++;
+    } else {
+      result[current] = 1;
+    }
+  });
+  return result;
 };
 
 const dedup = function(str) {
-  // Your code goes here
+  return _.uniq(str.split('')).join('');
 };
 
 module.exports = {

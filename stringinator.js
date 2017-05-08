@@ -37,13 +37,7 @@ const truncateLongItems = function(obj, maxLength) {
 
 const countChars = function(str) {
   const result = {};
-  _.each(str.split(''), current => {
-    if (result[current]) {
-      result[current]++;
-    } else {
-      result[current] = 1;
-    }
-  });
+  _.each(str.split(''), current => result[current] ? result[current]++ : result[current] = 1);
   return result;
 };
 
